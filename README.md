@@ -44,8 +44,10 @@ select_date('2013-05-24', xpath: '//path_to//your_date_input', datepicker: :boot
 Available options are:
 + **from:** the label of your date input
 + **xpath:** the path to your date input
-+ **format:** the format used to fill your date input
-+ **datepicker:** the way to fill your date input (:bootstrap = by clicking the popover); by default it just fill the input date.
++ **format:** the format used to fill your date input (required if datepicker: false)
++ **datepicker:** the way to fill your date input
+    + **true:** by clicking the popover
+    + **false:** directly fill the input date (default)
 
 ## Contributing
 

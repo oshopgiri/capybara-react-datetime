@@ -10,14 +10,13 @@ module Capybara
     # @param from [String, nil] the path to input field (required if `xpath` is nil)
     # @param xpath [String, nil] the xpath to input field (required if `from` is nil)
     # @param args [Hash] extra args to find the input field
-    def select_date(value, datepicker: :bootstrap, format: nil, from: nil, xpath: nil, **args)
+    def select_date(value, datepicker: false, format: nil, from: nil, xpath: nil, **args)
       fail "Must pass a hash containing 'from' or 'xpath'" if from.nil? && xpath.nil?
 
       value = value.respond_to?(:to_date) ? value.to_date : Date.parse(value)
       date_input = xpath ? find(:xpath, xpath, **args) : find_field(from, **args)
 
-      case datepicker
-      when :bootstrap
+      if datepicker
         select_bootstrap_date date_input, value
       else
         select_simple_date date_input, value, format
@@ -80,14 +79,14 @@ module Capybara
       # @param value [Fixnum] the year of the desired date
       # @return the DOM element to click on
       def find_year(value)
-        years.find '.year', text: value
+        years.find '.rdtYear', text: value
       end
 
       # Get the month we want to click on
       # @param value [Fixnum] the month of the desired date
       # @return the DOM element to click on
       def find_month(value)
-        months.find ".month:nth-child(#{value})"
+        months.find ".rdtMonth:nth-child(#{value})"
       end
 
       # Get the day we want to click on
@@ -95,9 +94,9 @@ module Capybara
       # @return the DOM element to click on
       def find_day(value)
         day_xpath = <<-eos
-            .//*[contains(concat(' ', @class, ' '), ' day ')
-            and not(contains(concat(' ', @class, ' '), ' old '))
-            and not(contains(concat(' ', @class, ' '), ' new '))
+            .//*[contains(concat(' ', @class, ' '), ' rdtDay ')
+            and not(contains(concat(' ', @class, ' '), ' rdtOld '))
+            and not(contains(concat(' ', @class, ' '), ' rdtNew '))
             and normalize-space(text())='#{value}']
         eos
         days.find :xpath, day_xpath
