@@ -1,16 +1,16 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'capybara-bootstrap-datepicker/version'
+require 'capybara-react-datetime/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = 'capybara-bootstrap-datepicker'
-  gem.version       = Capybara::BootstrapDatepicker::VERSION
-  gem.authors       = ['François Vantomme']
-  gem.email         = ['akarzim@gmail.com']
-  gem.summary       = %q{Bootstrap datepicker helper for Capybara}
-  gem.description   = %q{Helper for triggering date input for bootstrap-datepicker javascript library}
-  gem.homepage      = 'https://github.com/akarzim/capybara-bootstrap-datepicker'
+  gem.name          = 'capybara-react-datetime'
+  gem.version       = Capybara::ReactDatetime::VERSION
+  gem.authors       = ['Osho Giri']
+  gem.email         = ['oshopgiri@hotmail.com']
+  gem.summary       = %q{react-datetime helper for Capybara}
+  gem.description   = %q{Helper for changing date input of react-datetime library}
+  gem.homepage      = 'https://github.com/oshopgiri/capybara-react-datetime'
   gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)

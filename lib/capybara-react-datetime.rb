@@ -1,8 +1,8 @@
-require 'capybara-bootstrap-datepicker/version'
+require 'capybara-react-datetime/version'
 
 module Capybara
   # Adds datepicker interaction facilities to {Capybara}
-  module BootstrapDatepicker
+  module ReactDatetime
     # Selects a date by simulating human interaction with the datepicker or filling the input field
     # @param value [#to_date, String] any object that responds to `#to_date` or a parsable date string
     # @param datepicker [:bootstrap, :simple] the datepicker to use (are supported: bootstrap or input field)
@@ -10,14 +10,13 @@ module Capybara
     # @param from [String, nil] the path to input field (required if `xpath` is nil)
     # @param xpath [String, nil] the xpath to input field (required if `from` is nil)
     # @param args [Hash] extra args to find the input field
-    def select_date(value, datepicker: :bootstrap, format: nil, from: nil, xpath: nil, **args)
+    def select_date(value, datepicker: false, format: nil, from: nil, xpath: nil, **args)
       fail "Must pass a hash containing 'from' or 'xpath'" if from.nil? && xpath.nil?
 
       value = value.respond_to?(:to_date) ? value.to_date : Date.parse(value)
       date_input = xpath ? find(:xpath, xpath, **args) : find_field(from, **args)
 
-      case datepicker
-      when :bootstrap
+      if datepicker
         select_bootstrap_date date_input, value
       else
         select_simple_date date_input, value, format
@@ -80,14 +79,14 @@ module Capybara
       # @param value [Fixnum] the year of the desired date
       # @return the DOM element to click on
       def find_year(value)
-        years.find '.year', text: value
+        years.find '.rdtYear', text: value
       end
 
       # Get the month we want to click on
       # @param value [Fixnum] the month of the desired date
       # @return the DOM element to click on
       def find_month(value)
-        months.find ".month:nth-child(#{value})"
+        months.find ".rdtMonth[data-value='#{value - 1}']"
       end
 
       # Get the day we want to click on
@@ -95,9 +94,9 @@ module Capybara
       # @return the DOM element to click on
       def find_day(value)
         day_xpath = <<-eos
-            .//*[contains(concat(' ', @class, ' '), ' day ')
-            and not(contains(concat(' ', @class, ' '), ' old '))
-            and not(contains(concat(' ', @class, ' '), ' new '))
+            .//*[contains(concat(' ', @class, ' '), ' rdtDay ')
+            and not(contains(concat(' ', @class, ' '), ' rdtOld '))
+            and not(contains(concat(' ', @class, ' '), ' rdtNew '))
             and normalize-space(text())='#{value}']
         eos
         days.find :xpath, day_xpath
@@ -108,21 +107,21 @@ module Capybara
       # Get the datepicker
       # @return the DOM element of the datepicker
       def find_picker
-        Capybara.find(:xpath, '//body').find('.datepicker')
+        Capybara.find(:xpath, '//body').find('.rdtPicker')
       end
 
       # Get the datepicker panel
       # @param period [:years, :months, :days] the panel's period
       # @return the DOM element of the panel
       def find_period(period)
-        @element.find(".datepicker-#{period}", visible: false)
+        @element.find(".rdt#{period.to_s.titleize}", visible: false)
       end
 
       # Get the up level panel
       # @param (see #find_period)
       # @return the DOM element of the switch panel button
       def find_switch(period)
-        send(period).find('th.datepicker-switch', visible: false)
+        send(period).find('th.rdtSwitch', visible: false)
       end
 
       # Get the years panel
@@ -175,12 +174,12 @@ module Capybara
 
       # Click and display previous decade
       def click_prev_decade
-        years.find('th.prev').click
+        years.find('th.rdtPrev').click
       end
 
       # Click and display next decade
       def click_next_decade
-        years.find('th.next').click
+        years.find('th.rdtNext').click
       end
 
       # Calculates the distance in decades between min and max
