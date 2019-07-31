@@ -86,7 +86,7 @@ module Capybara
       # @param value [Fixnum] the month of the desired date
       # @return the DOM element to click on
       def find_month(value)
-        months.find ".rdtMonth[data-value=#{value - 1}]"
+        months.find ".rdtMonth[data-value='#{value - 1}']"
       end
 
       # Get the day we want to click on
