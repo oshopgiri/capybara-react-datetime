@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    capybara-bootstrap-datepicker (0.1.2)
+    capybara-react-datetime (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -61,7 +61,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (~> 3.11, >= 3.11.1)
-  capybara-bootstrap-datepicker!
+  capybara-react-datetime!
   capybara-screenshot (~> 1.0, >= 1.0.22)
   nokogiri (>= 1.6.7.2)
   phantomjs (~> 2.1, >= 2.1.1.0)

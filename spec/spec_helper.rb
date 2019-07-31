@@ -2,7 +2,7 @@
 require 'bundler/setup'
 Bundler.setup
 
-require 'capybara-bootstrap-datepicker/rspec'
+require 'capybara-react-datetime/rspec'
 require 'capybara'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'

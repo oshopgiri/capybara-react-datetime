@@ -1,8 +1,8 @@
-require 'capybara-bootstrap-datepicker/version'
+require 'capybara-react-datetime/version'
 
 module Capybara
   # Adds datepicker interaction facilities to {Capybara}
-  module BootstrapDatepicker
+  module ReactDatetime
     # Selects a date by simulating human interaction with the datepicker or filling the input field
     # @param value [#to_date, String] any object that responds to `#to_date` or a parsable date string
     # @param datepicker [:bootstrap, :simple] the datepicker to use (are supported: bootstrap or input field)

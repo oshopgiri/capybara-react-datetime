@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in capybara-bootstrap-datepicker.gemspec
+# Specify your gem's dependencies in capybara-react-datetime.gemspec
 gemspec
 
 gem 'nokogiri', '>= 1.6.7.2'

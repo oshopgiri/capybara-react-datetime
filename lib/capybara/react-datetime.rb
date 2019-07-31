@@ -1,0 +1,1 @@
+require '../capybara-react-datetime'

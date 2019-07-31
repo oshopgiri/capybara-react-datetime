@@ -1,25 +1,22 @@
-[![Gem Version](https://badge.fury.io/rb/capybara-bootstrap-datepicker.svg)](http://badge.fury.io/rb/capybara-bootstrap-datepicker)
-[![Travis CI](https://travis-ci.org/akarzim/capybara-bootstrap-datepicker.svg?branch=master)](https://travis-ci.org/akarzim/capybara-bootstrap-datepicker.svg?branch=master)
+# Capybara::ReactDatetime
 
-# Capybara::BootstrapDatepicker
+Helper for triggering date input for react-datetime library
 
-Helper for triggering date input for bootstrap-datepicker javascript library
-
-All this gem does is something very simple : allow you to trigger Bootstrap datepicker to select the date you want.
+All this gem does is something very simple : allow you to trigger react-datetime to select the date you want.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'capybara-bootstrap-datepicker', group: :test
+gem 'capybara-react-datetime', git: 'https://github.com/oshopgiri/capybara-react-datetime.git', group: :test
 ```
 
 Or, add it into your test group
 
 ```ruby
 group :test do
-    gem 'capybara-bootstrap-datepicker'
+    gem 'capybara-react-datetime', git: 'https://github.com/oshopgiri/capybara-react-datetime.git'
     ...
 end
 ```
@@ -30,7 +27,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install capybara-bootstrap-datepicker
+    $ gem install capybara-react-datetime
 
 The gem automatically hook itself into rspec helper using Rspec.configure.
 
@@ -66,7 +63,7 @@ Just run rspec in your terminal:
 ## Upgrading from 0.0.x
 
 RSpec support has been split into a separate file. You'll need to change
-`spec_helper.rb` to `require 'capybara-bootstrap-datepicker/rspec'`.
+`spec_helper.rb` to `require 'capybara-react-datetime/rspec'`.
 
 ## Contributing
 
