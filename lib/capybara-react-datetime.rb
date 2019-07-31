@@ -108,21 +108,21 @@ module Capybara
       # Get the datepicker
       # @return the DOM element of the datepicker
       def find_picker
-        Capybara.find(:xpath, '//body').find('.datepicker')
+        Capybara.find(:xpath, '//body').find('.rdtPicker')
       end
 
       # Get the datepicker panel
       # @param period [:years, :months, :days] the panel's period
       # @return the DOM element of the panel
       def find_period(period)
-        @element.find(".datepicker-#{period}", visible: false)
+        @element.find(".rdt#{period.to_s.titleize}", visible: false)
       end
 
       # Get the up level panel
       # @param (see #find_period)
       # @return the DOM element of the switch panel button
       def find_switch(period)
-        send(period).find('th.datepicker-switch', visible: false)
+        send(period).find('th.rdtSwitch', visible: false)
       end
 
       # Get the years panel
@@ -175,12 +175,12 @@ module Capybara
 
       # Click and display previous decade
       def click_prev_decade
-        years.find('th.prev').click
+        years.find('th.rdtPrev').click
       end
 
       # Click and display next decade
       def click_next_decade
-        years.find('th.next').click
+        years.find('th.rdtNext').click
       end
 
       # Calculates the distance in decades between min and max
