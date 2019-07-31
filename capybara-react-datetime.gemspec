@@ -6,10 +6,10 @@ require 'capybara-react-datetime/version'
 Gem::Specification.new do |gem|
   gem.name          = 'capybara-react-datetime'
   gem.version       = Capybara::ReactDatetime::VERSION
-  gem.authors       = ['François Vantomme', 'Osho Giri']
-  gem.email         = ['akarzim@gmail.com', 'oshopgiri@hotmail.com']
+  gem.authors       = ['Osho Giri']
+  gem.email         = ['oshopgiri@hotmail.com']
   gem.summary       = %q{react-datetime helper for Capybara}
-  gem.description   = %q{Helper for triggering date input for react-datetime library}
+  gem.description   = %q{Helper for changing date input of react-datetime library}
   gem.homepage      = 'https://github.com/oshopgiri/capybara-react-datetime'
   gem.license       = 'MIT'
 
