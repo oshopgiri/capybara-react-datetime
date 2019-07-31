@@ -38,7 +38,7 @@ Or even:
 ```ruby
 select_date(2.weeks.ago, from: 'Date', match: :prefer_exact)
 select_date(Date.tomorrow, from: 'Label of the date input', format: '%d/%m/%Y')
-select_date('2013-05-24', xpath: '//path_to//your_date_input', datepicker: :bootstrap)
+select_date('2013-05-24', xpath: '//path_to//your_date_input', datepicker: true)
 ```
 
 Available options are:
