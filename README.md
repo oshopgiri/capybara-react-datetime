@@ -10,7 +10,7 @@ Add this line into your test group:
 
 ```ruby
 group :test do
-    gem 'capybara-react-datetime', git: 'https://github.com/oshopgiri/capybara-react-datetime.git'
+    gem 'capybara-react-datetime'
     ...
 end
 ```
